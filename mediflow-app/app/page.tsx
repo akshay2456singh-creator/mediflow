@@ -66,15 +66,7 @@ export default function HomePage() {
           </div>
         </button>
 
-        {/* Live Queue */}
-        <button
-          onClick={() => router.push("/queue")}
-          className="w-full bg-green-600 hover:bg-green-700 transition p-6 rounded-2xl shadow-lg flex items-center gap-4"
-        >
-          <Activity size={32} />
-
-          
-        </button>
+        
 
       </div>
     </div>
