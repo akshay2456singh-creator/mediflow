@@ -50,7 +50,7 @@ export default function HomePage() {
 
         {/* Emergency */}
         <button
-          onClick={() => router.push("/emergency")}
+          onClick={() => router.push("/Emergency")}
           className="w-full bg-red-600 hover:bg-red-700 transition p-6 rounded-2xl shadow-lg flex items-center gap-4"
         >
           <Ambulance size={32} />
