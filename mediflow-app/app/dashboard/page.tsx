@@ -85,19 +85,66 @@ export default function DashboardPage() {
 
    useEffect(() => {
 
+    if (Notification.permission !== "granted") return;
+ 
+  // MORE THAN 50 → every 15 patients
     if (
-      Notification.permission === "granted" &&
-      patientsAhead <= 2 &&
-      patientsAhead > 0
-    ) {
+      patientsAhead > 50 &&
+      patientsAhead % 15 === 0
+  ) {
 
-    new Notification("MediFlow Alert", {
-      body: `Only ${patientsAhead} patients ahead of you.`,
+    new Notification("MediFlow Queue Update", {
+      body: `${patientsAhead} patients ahead of you.`,
     });
 
-    }
+  }
 
-    }, [patientsAhead]);
+  // 10 TO 50 → every 5 patients
+    else if (
+      patientsAhead > 10 &&
+      patientsAhead % 5 === 0
+  ) {
+
+    new Notification("MediFlow Queue Update", {
+      body: `${patientsAhead} patients ahead of you.`,
+    });
+
+  }
+
+  // 5 TO 10 → every 2 patients
+    else if (
+     patientsAhead > 5 &&
+     patientsAhead % 2 === 0
+  ) {
+
+    new Notification("MediFlow Queue Update", {
+      body: `Only ${patientsAhead} patients ahead.`,
+    });
+
+  }
+
+  // LAST 5 → every patient
+    else if (
+     patientsAhead > 0 &&
+     patientsAhead <= 5
+  ) {
+
+    new Notification("MediFlow Alert", {
+      body: `Your turn is approaching! ${patientsAhead} patients left.`,
+    });
+
+  }
+
+  // YOUR TURN
+    else if (patientsAhead === 0) {
+
+    new Notification("MediFlow Alert", {
+      body: "Please proceed to consultation.",
+    });
+
+  }
+  
+  }, [patientsAhead]);
 
   return (
 
@@ -253,7 +300,7 @@ export default function DashboardPage() {
        className="mt-8 w-full bg-cyan-500 hover:bg-cyan-400 transition-all duration-300 rounded-2xl py-4 text-lg font-bold text-black shadow-lg shadow-cyan-500/20"
 >
 
-        Book Another Appointment
+        Book An Appointment
 
      </button>
     </div>
