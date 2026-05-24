@@ -78,9 +78,7 @@ export default function HomePage() {
               Live Queue
             </h2>
 
-            <p className="text-sm text-gray-200">
-              Track patient queue live
-            </p>
+           
           </div>
         </button>
 
