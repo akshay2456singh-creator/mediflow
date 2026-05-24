@@ -73,13 +73,7 @@ export default function HomePage() {
         >
           <Activity size={32} />
 
-          <div className="text-left">
-            <h2 className="text-xl font-semibold">
-              Live Queue
-            </h2>
-
-           
-          </div>
+          
         </button>
 
       </div>
